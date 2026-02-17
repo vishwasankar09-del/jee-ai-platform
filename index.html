@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JEE AI Platform</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #f5f7fb;
+      text-align: center;
+      padding: 40px;
+    }
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      width: 360px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,.1);
+    }
+    input, button {
+      padding: 10px;
+      margin: 8px;
+      width: 90%;
+    }
+    button {
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>🚀 JEE AI Test Platform</h1>
+
+  <div class="card">
+    <h3>Mock Test Generator</h3>
+    <input id="rank" type="number" placeholder="Target Rank (eg: 5000)">
+    <button onclick="generate()">Generate Test</button>
+    <p id="result"></p>
+  </div>
+
+<script>
+function generate() {
+  let rank = document.getElementById("rank").value;
+  let diff = "Easy";
+
+  if(rank <= 1000) diff = "Advanced";
+  else if(rank <= 5000) diff = "Hard";
+  else if(rank <= 15000) diff = "Medium";
+
+  document.getElementById("result").innerHTML =
+    "✅ Test Generated<br>Difficulty Level: <b>" + diff + "</b>";
+}
+</script>
+
+</body>
+</html>
