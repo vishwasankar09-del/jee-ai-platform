@@ -2,7 +2,7 @@ let questions = [];
 let index = 0;
 let score = 0;
 
-const backend = "YOUR_BACKEND_URL"; // <-- PASTE YOUR RENDER URL
+const backend = "https://jee-ai-platform.onrender.com"; // <-- PASTE YOUR RENDER URL
 
 function generateTest() {
   const rank = document.getElementById("rank").value;
