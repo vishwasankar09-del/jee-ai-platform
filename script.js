@@ -10,7 +10,7 @@ async function generateTest() {
 
   document.getElementById("output").innerHTML = "⏳ Generating JEE Level Questions...";
 
-  const res = await fetch("https://YOUR-BACKEND-URL.onrender.com/generate-test", {
+  const res = await fetch("https://https://jee-ai-platform.onrender.com//generate-test", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data)
