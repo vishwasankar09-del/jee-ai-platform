@@ -1,51 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>JEE AI Mock Test Platform</title>
+  <title>JEE AI Mock Test</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="container">
+<h1>JEE AI Mock Test Platform</h1>
 
-  <h1>🚀 JEE AI Mock Test Platform</h1>
-
-  <div id="setup">
-    <input id="rank" type="number" placeholder="Enter Target Rank">
-
-    <select id="subject">
-      <option value="physics">Physics</option>
-      <option value="chemistry">Chemistry</option>
-      <option value="maths">Mathematics</option>
-    </select>
-
-    <button onclick="generateTest()">Generate Mock Test</button>
-  </div>
-
-  <div id="test" class="hidden">
-    <h2 id="qno"></h2>
-    <p id="question"></p>
-
-    <div class="options">
-      <button onclick="selectOption(0)" id="opt0"></button>
-      <button onclick="selectOption(1)" id="opt1"></button>
-      <button onclick="selectOption(2)" id="opt2"></button>
-      <button onclick="selectOption(3)" id="opt3"></button>
-    </div>
-
-    <div class="nav">
-      <button onclick="prevQ()">Previous</button>
-      <button onclick="nextQ()">Next</button>
-      <button onclick="submitTest()">Submit</button>
-    </div>
-  </div>
-
-  <div id="result" class="hidden"></div>
-
+<div id="setup">
+  <input id="rank" type="number" placeholder="Enter Target Rank">
+  <button onclick="generateTest()">Generate Test</button>
 </div>
+
+<div id="test" class="hidden">
+  <h3 id="qno"></h3>
+  <p id="question"></p>
+
+  <button id="opt0" onclick="selectOption(0)"></button>
+  <button id="opt1" onclick="selectOption(1)"></button>
+  <button id="opt2" onclick="selectOption(2)"></button>
+  <button id="opt3" onclick="selectOption(3)"></button>
+</div>
+
+<div id="result" class="hidden"></div>
 
 <script src="script.js"></script>
 </body>
 </html>
-
