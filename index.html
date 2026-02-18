@@ -1,61 +1,51 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>JEE AI Platform</title>
-  <style>
-    body {
-      font-family: Arial;
-      background: #f5f7fb;
-      text-align: center;
-      padding: 40px;
-    }
-    .card {
-      background: white;
-      padding: 25px;
-      border-radius: 10px;
-      width: 360px;
-      margin: auto;
-      box-shadow: 0 0 10px rgba(0,0,0,.1);
-    }
-    input, button {
-      padding: 10px;
-      margin: 8px;
-      width: 90%;
-    }
-    button {
-      background: #2563eb;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <title>JEE AI Mock Test Platform</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-  <h1>🚀 JEE AI Test Platform</h1>
+<div class="container">
 
-  <div class="card">
-    <h3>Mock Test Generator</h3>
-    <input id="rank" type="number" placeholder="Target Rank (eg: 5000)">
-    <button onclick="generate()">Generate Test</button>
-    <p id="result"></p>
+  <h1>🚀 JEE AI Mock Test Platform</h1>
+
+  <div id="setup">
+    <input id="rank" type="number" placeholder="Enter Target Rank">
+
+    <select id="subject">
+      <option value="physics">Physics</option>
+      <option value="chemistry">Chemistry</option>
+      <option value="maths">Mathematics</option>
+    </select>
+
+    <button onclick="generateTest()">Generate Mock Test</button>
   </div>
 
-<script>
-function generate() {
-  let rank = document.getElementById("rank").value;
-  let diff = "Easy";
+  <div id="test" class="hidden">
+    <h2 id="qno"></h2>
+    <p id="question"></p>
 
-  if(rank <= 1000) diff = "Advanced";
-  else if(rank <= 5000) diff = "Hard";
-  else if(rank <= 15000) diff = "Medium";
+    <div class="options">
+      <button onclick="selectOption(0)" id="opt0"></button>
+      <button onclick="selectOption(1)" id="opt1"></button>
+      <button onclick="selectOption(2)" id="opt2"></button>
+      <button onclick="selectOption(3)" id="opt3"></button>
+    </div>
 
-  document.getElementById("result").innerHTML =
-    "✅ Test Generated<br>Difficulty Level: <b>" + diff + "</b>";
-}
-</script>
+    <div class="nav">
+      <button onclick="prevQ()">Previous</button>
+      <button onclick="nextQ()">Next</button>
+      <button onclick="submitTest()">Submit</button>
+    </div>
+  </div>
 
+  <div id="result" class="hidden"></div>
+
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
+
