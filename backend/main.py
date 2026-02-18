@@ -1,44 +1,58 @@
 from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
-import random
+from pydantic import BaseModel
+import os
+import openai
+
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 app = FastAPI()
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+class TestRequest(BaseModel):
+    subject: str
+    chapter: str
+    topic: str
+    difficulty: str
+    n: int
 
 @app.get("/")
 def home():
-    return {"status": "JEE AI Backend Running Successfully"}
+    return {"status": "🔥 JEE AI Engine Running Successfully"}
 
-@app.get("/generate/{rank}")
-def generate_test(rank: int):
+@app.post("/generate-test")
+def generate_test(req: TestRequest):
 
-    if rank <= 1000:
-        diff = "Advanced"
-    elif rank <= 5000:
-        diff = "Hard"
-    elif rank <= 15000:
-        diff = "Medium"
-    else:
-        diff = "Easy"
+    prompt = f"""
+You are a senior JEE Advanced problem setter from IIT.
 
-    questions = []
+Generate a {req.difficulty} level JEE test with {req.n} questions from:
 
-    for i in range(10):
-        x = random.randint(2,20)
-        questions.append({
-            "question": f"{diff} JEE Question: If x = {x}, find 3x",
-            "options": [str(3*x), str(4*x), str(5*x), str(6*x)],
-            "answer": str(3*x)
-        })
+Subject: {req.subject}
+Chapter: {req.chapter}
+Topic: {req.topic}
 
-    return {
-        "difficulty": diff,
-        "questions": questions
-    }
+Difficulty Rules:
+- JEE Main: Moderate to hard
+- JEE Advanced: Very hard, multi-concept, analytical
+
+Output JSON STRICT:
+{{
+  "questions": [
+    {{
+      "id": 1,
+      "question": "...",
+      "options": ["A","B","C","D"],
+      "answer": "B",
+      "solution": "Step-by-step detailed explanation"
+    }}
+  ]
+}}
+"""
+
+    response = openai.ChatCompletion.create(
+        model="gpt-4o-mini",
+        messages=[{"role": "user", "content": prompt}],
+        temperature=0.9
+    )
+
+    return response.choices[0].message.content
 
