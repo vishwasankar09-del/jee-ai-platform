@@ -1,63 +1,40 @@
-let questions = [];
-let current = 0;
-let score = 0;
+async function generateTest() {
 
-const backend = "https://jee-ai-platform.onrender.com"; // your backend
+  const data = {
+    subject: document.getElementById("subject").value,
+    chapter: document.getElementById("chapter").value,
+    topic: document.getElementById("topic").value,
+    difficulty: document.getElementById("difficulty").value,
+    n: parseInt(document.getElementById("n").value)
+  };
 
-function generateTest() {
-  const rank = document.getElementById("rank").value;
+  document.getElementById("output").innerHTML = "⏳ Generating JEE Level Questions...";
 
-  if (!rank) {
-    alert("Enter rank");
-    return;
-  }
+  const res = await fetch("https://YOUR-BACKEND-URL.onrender.com/generate-test", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
 
-  fetch(`${backend}/generate/${rank}`)
-    .then(res => res.json())
-    .then(data => {
-      questions = makeQuestions(data.difficulty);
-      document.getElementById("setup").classList.add("hidden");
-      document.getElementById("test").classList.remove("hidden");
-      showQ();
-    })
-    .catch(err => {
-      alert("Backend error");
-      console.log(err);
-    });
-}
+  const result = await res.json();
 
-function makeQuestions(diff) {
-  let arr = [];
-  for (let i = 1; i <= 10; i++) {
-    arr.push({
-      q: `${diff} JEE Question ${i}: If x=${i}, find 2x`,
-      opts: [`${2*i}`, `${3*i}`, `${4*i}`, `${5*i}`],
-      ans: 0
-    });
-  }
-  return arr;
-}
+  let html = "";
 
-function showQ() {
-  let q = questions[current];
-  document.getElementById("qno").innerText = `Question ${current+1}`;
-  document.getElementById("question").innerText = q.q;
+  result.questions.forEach(q => {
+    html += `
+      <div class="qbox">
+        <h3>Q${q.id}. ${q.question}</h3>
+        <p>A. ${q.options[0]}</p>
+        <p>B. ${q.options[1]}</p>
+        <p>C. ${q.options[2]}</p>
+        <p>D. ${q.options[3]}</p>
+        <details>
+          <summary>Solution</summary>
+          <p>${q.solution}</p>
+        </details>
+      </div>
+    `;
+  });
 
-  for (let i = 0; i < 4; i++) {
-    document.getElementById("opt"+i).innerText = q.opts[i];
-  }
-}
-
-function selectOption(i) {
-  if (i === questions[current].ans) score++;
-  current++;
-
-  if (current < questions.length) {
-    showQ();
-  } else {
-    document.getElementById("test").classList.add("hidden");
-    document.getElementById("result").classList.remove("hidden");
-    document.getElementById("result").innerHTML =
-      `<h2>Score: ${score}/${questions.length}</h2>`;
-  }
+  document.getElementById("output").innerHTML = html;
 }
