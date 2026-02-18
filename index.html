@@ -1,30 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>JEE AI Mock Test</title>
+  <title>JEE AI Mock Test Platform</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>JEE AI Mock Test Platform</h1>
+<h1>🔥 JEE AI Mock Test Generator</h1>
 
-<div id="setup">
-  <input id="rank" type="number" placeholder="Enter Target Rank">
-  <button onclick="generateTest()">Generate Test</button>
-</div>
+<select id="subject">
+  <option>Mathematics</option>
+  <option>Physics</option>
+  <option>Chemistry</option>
+</select>
 
-<div id="test" class="hidden">
-  <h3 id="qno"></h3>
-  <p id="question"></p>
+<input id="chapter" placeholder="Chapter">
+<input id="topic" placeholder="Topic">
 
-  <button id="opt0" onclick="selectOption(0)"></button>
-  <button id="opt1" onclick="selectOption(1)"></button>
-  <button id="opt2" onclick="selectOption(2)"></button>
-  <button id="opt3" onclick="selectOption(3)"></button>
-</div>
+<select id="difficulty">
+  <option>JEE Main</option>
+  <option>JEE Advanced</option>
+</select>
 
-<div id="result" class="hidden"></div>
+<input id="n" type="number" value="10">
+
+<button onclick="generateTest()">Generate Test</button>
+
+<div id="output"></div>
 
 <script src="script.js"></script>
+
 </body>
 </html>
+
