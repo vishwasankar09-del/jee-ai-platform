@@ -64,6 +64,44 @@ const syllabus = {
   }
 };
 
+const subjectSelect = document.getElementById("subject");
+const chapterSelect = document.getElementById("chapter");
+const topicSelect = document.getElementById("topic");
+
+function loadChapters() {
+  chapterSelect.innerHTML = "";
+  topicSelect.innerHTML = "";
+
+  const chapters = Object.keys(syllabus[subjectSelect.value]);
+
+  chapters.forEach(ch => {
+    const opt = document.createElement("option");
+    opt.value = ch;
+    opt.innerText = ch;
+    chapterSelect.appendChild(opt);
+  });
+
+  loadTopics();
+}
+
+function loadTopics() {
+  topicSelect.innerHTML = "";
+
+  const topics = syllabus[subjectSelect.value][chapterSelect.value];
+
+  topics.forEach(tp => {
+    const opt = document.createElement("option");
+    opt.value = tp;
+    opt.innerText = tp;
+    topicSelect.appendChild(opt);
+  });
+}
+
+subjectSelect.addEventListener("change", loadChapters);
+chapterSelect.addEventListener("change", loadTopics);
+
+loadChapters();
+
 async function generateTest() {
 
   const data = {
