@@ -54,5 +54,7 @@ Output JSON STRICT:
         temperature=0.9
     )
 
-    return response.choices[0].message.content
+    import json
+    return json.loads(response.choices[0].message.content)
+
 
