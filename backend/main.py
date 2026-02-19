@@ -39,7 +39,7 @@ else:
 prompt = f"""
 You are a senior JEE Advanced problem setter from IIT.
 
-Generate a {diff} level JEE test with {req.n} questions.
+Generate a JEE test for a student targeting AIR {req.rank} with {req.n} questions.
 
 Subject: {req.subject}
 Chapter: {req.chapter}
