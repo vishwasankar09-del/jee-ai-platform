@@ -1,65 +1,168 @@
 const syllabus = {
+
   Mathematics: {
     "Limits & Continuity": [
-      "Algebraic limits",
-      "LHL RHL problems",
-      "Continuity and differentiability"
+      "Limits using algebraic manipulation",
+      "LHL and RHL problems",
+      "Continuity and differentiability",
+      "Graph based limits"
     ],
+
     "Differentiation": [
       "Tangent and normal",
-      "Maxima minima",
       "Rate of change",
-      "Monotonicity"
+      "Maxima and minima",
+      "Monotonicity",
+      "Increasing and decreasing functions"
     ],
+
     "Integration": [
+      "Indefinite integrals",
       "Definite integrals using properties",
       "Area under curve",
-      "Improper integrals"
+      "Improper integrals",
+      "Differential equations"
     ],
+
     "Coordinate Geometry": [
-      "Straight line locus problems",
-      "Circle & parabola combined locus",
-      "Ellipse & hyperbola tangents"
+      "Straight lines",
+      "Circle",
+      "Parabola",
+      "Ellipse",
+      "Hyperbola",
+      "Locus problems",
+      "Combined conic problems"
+    ],
+
+    "Vectors & 3D Geometry": [
+      "Vector algebra",
+      "Scalar and vector triple product",
+      "Direction cosines",
+      "Line and plane",
+      "Shortest distance between two lines"
+    ],
+
+    "Algebra": [
+      "Quadratic equations",
+      "Complex numbers",
+      "Permutations and combinations",
+      "Binomial theorem",
+      "Sequences and series",
+      "Probability",
+      "Matrices and determinants"
     ]
   },
 
   Physics: {
-    "Electrostatics": [
-      "Gauss law applications",
-      "Field due to continuous charge",
-      "Capacitors with dielectric",
-      "Energy stored in capacitor"
+    "Kinematics": [
+      "1D motion",
+      "2D motion",
+      "Projectile motion",
+      "Relative velocity"
     ],
+
+    "Laws of Motion": [
+      "Newton's laws",
+      "Friction",
+      "Pulley problems",
+      "Constraint motion"
+    ],
+
+    "Work Power Energy": [
+      "Work energy theorem",
+      "Conservation of energy",
+      "Variable force",
+      "Spring systems"
+    ],
+
+    "Rotational Mechanics": [
+      "Torque and angular momentum",
+      "Moment of inertia",
+      "Rolling motion",
+      "Rigid body dynamics"
+    ],
+
+    "Gravitation": [
+      "Gravitational field",
+      "Potential and escape velocity",
+      "Satellite motion"
+    ],
+
+    "Electrostatics": [
+      "Coulomb law",
+      "Electric field and flux",
+      "Gauss law",
+      "Capacitors",
+      "Dielectrics"
+    ],
+
     "Current Electricity": [
+      "Ohm law",
       "Kirchhoff laws",
       "Wheatstone bridge",
-      "Potentiometer numericals"
+      "Potentiometer"
     ],
-    "Rotational Mechanics": [
-      "Rolling motion",
-      "Angular momentum conservation",
-      "Rigid body dynamics"
+
+    "Magnetism & EMI": [
+      "Biot Savart law",
+      "Ampere law",
+      "Electromagnetic induction",
+      "AC circuits"
+    ],
+
+    "Optics": [
+      "Ray optics",
+      "Wave optics",
+      "Interference",
+      "Diffraction",
+      "Polarization"
+    ],
+
+    "Modern Physics": [
+      "Photoelectric effect",
+      "Bohr model",
+      "Nuclear physics",
+      "Semiconductors"
     ]
   },
 
   Chemistry: {
-    "Organic Chemistry": [
-      "Chemical properties of alkenes",
-      "Reaction mechanism of alkyl halides",
-      "Carbonyl compounds multi-step reactions",
-      "Amines reactions and preparation"
-    ],
     "Physical Chemistry": [
-      "Electrochemistry numericals",
-      "Thermodynamics Gibbs free energy",
-      "Chemical kinetics rate laws",
-      "Colligative properties"
+      "Mole concept",
+      "Thermodynamics",
+      "Chemical equilibrium",
+      "Ionic equilibrium",
+      "Electrochemistry",
+      "Chemical kinetics",
+      "Solutions",
+      "Solid state",
+      "Surface chemistry"
     ],
+
+    "Organic Chemistry": [
+      "General organic chemistry (GOC)",
+      "Hydrocarbons",
+      "Alkenes chemical properties",
+      "Alkynes reactions",
+      "Alkyl halides",
+      "Alcohols phenols ethers",
+      "Aldehydes and ketones",
+      "Carboxylic acids",
+      "Amines",
+      "Biomolecules",
+      "Polymers",
+      "Practical organic chemistry"
+    ],
+
     "Inorganic Chemistry": [
-      "Coordination compounds isomerism",
-      "Chemical bonding MOT",
-      "d-block trends",
-      "Salt analysis logic"
+      "Periodic table",
+      "Chemical bonding",
+      "Coordination compounds",
+      "p-block elements",
+      "d and f block elements",
+      "Metallurgy",
+      "Salt analysis",
+      "Qualitative analysis"
     ]
   }
 };
