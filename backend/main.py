@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 import os
+import json
 import openai
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
@@ -21,7 +22,7 @@ def home():
 @app.post("/generate-test")
 def generate_test(req: TestRequest):
 
-prompt = f"""
+    prompt = f"""
 You are a senior JEE Advanced problem setter from IIT.
 
 Generate a {req.difficulty} level JEE test with {req.n} questions.
@@ -39,29 +40,19 @@ STRICT RULES:
   - Numerical solving
   - JEE exam level thinking
 
-Difficulty Standard:
-- JEE Main → Hard
-- JEE Advanced → Very Hard (multi-concept, tricky)
-
-Subjects:
-Mathematics → calculus, algebra, coordinate geometry, vectors, probability
-Physics → conceptual + multi-step numericals
-Chemistry → physical numericals + organic mechanisms + inorganic logic
-
 OUTPUT STRICT JSON:
-{
+{{
   "questions": [
-    {
+    {{
       "id": 1,
       "question": "...",
       "options": ["A","B","C","D"],
       "answer": "B",
       "solution": "Very detailed step-by-step explanation"
-    }
+    }}
   ]
-}
+}}
 """
-
 
     response = openai.ChatCompletion.create(
         model="gpt-4o-mini",
@@ -69,7 +60,9 @@ OUTPUT STRICT JSON:
         temperature=0.9
     )
 
-    import json
-    return json.loads(response.choices[0].message.content)
+    raw = response.choices[0].message.content
 
-
+    try:
+        return json.loads(raw)
+    except:
+        return {"error": "AI JSON parse failed", "raw": raw}
