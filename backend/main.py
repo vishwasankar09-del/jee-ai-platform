@@ -21,32 +21,47 @@ def home():
 @app.post("/generate-test")
 def generate_test(req: TestRequest):
 
-    prompt = f"""
+prompt = f"""
 You are a senior JEE Advanced problem setter from IIT.
 
-Generate a {req.difficulty} level JEE test with {req.n} questions from:
+Generate a {req.difficulty} level JEE test with {req.n} questions.
 
 Subject: {req.subject}
 Chapter: {req.chapter}
 Topic: {req.topic}
 
-Difficulty Rules:
-- JEE Main: Moderate to hard
-- JEE Advanced: Very hard, multi-concept, analytical
+STRICT RULES:
+- NO simple formula substitution questions
+- NO single-step problems
+- Each question must require:
+  - Multi-step reasoning
+  - Concept linking
+  - Numerical solving
+  - JEE exam level thinking
 
-Output JSON STRICT:
-{{
+Difficulty Standard:
+- JEE Main → Hard
+- JEE Advanced → Very Hard (multi-concept, tricky)
+
+Subjects:
+Mathematics → calculus, algebra, coordinate geometry, vectors, probability
+Physics → conceptual + multi-step numericals
+Chemistry → physical numericals + organic mechanisms + inorganic logic
+
+OUTPUT STRICT JSON:
+{
   "questions": [
-    {{
+    {
       "id": 1,
       "question": "...",
       "options": ["A","B","C","D"],
       "answer": "B",
-      "solution": "Step-by-step detailed explanation"
-    }}
+      "solution": "Very detailed step-by-step explanation"
+    }
   ]
-}}
+}
 """
+
 
     response = openai.ChatCompletion.create(
         model="gpt-4o-mini",
