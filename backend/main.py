@@ -25,7 +25,45 @@ def generate_test(req: TestRequest):
     prompt = f"""
 You are a senior JEE Advanced problem setter from IIT.
 
-Generate a {req.difficulty} level JEE test with {req.n} questions.
+if req.rank <= 500:
+    diff = "JEE Advanced – Extremely Hard"
+elif req.rank <= 2000:
+    diff = "JEE Advanced – Very Hard"
+elif req.rank <= 5000:
+    diff = "Hard"
+elif req.rank <= 15000:
+    diff = "Medium-Hard"
+else:
+    diff = "Medium"
+
+prompt = f"""
+You are a senior JEE Advanced problem setter from IIT.
+
+Generate a {diff} level JEE test with {req.n} questions.
+
+Subject: {req.subject}
+Chapter: {req.chapter}
+Topic: {req.topic}
+
+STRICT RULES:
+- NO simple formula substitution questions
+- Multi-step reasoning required
+- Tricky JEE pattern problems
+
+OUTPUT STRICT JSON:
+{{
+  "questions": [
+    {{
+      "id": 1,
+      "question": "...",
+      "options": ["A","B","C","D"],
+      "answer": "B",
+      "solution": "Detailed step-by-step explanation"
+    }}
+  ]
+}}
+"""
+
 
 Subject: {req.subject}
 Chapter: {req.chapter}
