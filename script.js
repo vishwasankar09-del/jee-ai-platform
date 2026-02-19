@@ -142,3 +142,22 @@ async function generateTest() {
 
   document.getElementById("output").innerHTML = html;
 }
+
+let totalSeconds = 3 * 60 * 60;
+
+function startTimer() {
+  setInterval(() => {
+    if (totalSeconds <= 0) return;
+
+    totalSeconds--;
+
+    let h = Math.floor(totalSeconds / 3600);
+    let m = Math.floor((totalSeconds % 3600) / 60);
+    let s = totalSeconds % 60;
+
+    document.getElementById("timer").innerText =
+      `Time Left: ${h}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+  }, 1000);
+}
+
+startTimer();
