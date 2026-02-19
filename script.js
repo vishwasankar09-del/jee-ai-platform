@@ -211,7 +211,7 @@ async function generateTest() {
     subject: document.getElementById("subject").value,
     chapter: document.getElementById("chapter").value,
     topic: document.getElementById("topic").value,
-    difficulty: document.getElementById("difficulty").value,
+    rank: parseInt(document.getElementById("rank").value),
     n: parseInt(document.getElementById("n").value)
   };
 
