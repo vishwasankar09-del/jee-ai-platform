@@ -12,7 +12,7 @@ class TestRequest(BaseModel):
     subject: str
     chapter: str
     topic: str
-    difficulty: str
+    rank: int
     n: int
 
 @app.get("/")
