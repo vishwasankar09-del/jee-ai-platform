@@ -27,34 +27,9 @@ You are a JEE question paper generator.
 
 STRICT RULES:
 - Output ONLY valid JSON.
-- Do NOT include explanations.
+- Do NOT include explanations outside JSON.
 - Do NOT include markdown.
 - Do NOT include any text before or after JSON.
-
-Generate {req.n} JEE {req.subject} questions
-Chapter: {req.chapter}
-Topic: {req.topic}
-Difficulty rank: {req.rank}
-
-Output format:
-{{
-  "questions": [
-    {{
-      "q": "...",
-      "options": ["A", "B", "C", "D"],
-      "answer": "..."
-    }}
-  ]
-}}
-"""
-
-
-
-Subject: {req.subject}
-Chapter: {req.chapter}
-Topic: {req.topic}
-
-STRICT RULES:
 - NO simple formula substitution questions
 - NO single-step problems
 - Each question must require:
@@ -63,7 +38,12 @@ STRICT RULES:
   - Numerical solving
   - JEE exam level thinking
 
-OUTPUT STRICT JSON:
+Generate {req.n} JEE {req.subject} questions.
+Chapter: {req.chapter}
+Topic: {req.topic}
+Target rank: {req.rank}
+
+OUTPUT FORMAT (STRICT JSON):
 {{
   "questions": [
     {{
@@ -71,11 +51,12 @@ OUTPUT STRICT JSON:
       "question": "...",
       "options": ["A","B","C","D"],
       "answer": "B",
-      "solution": "Very detailed step-by-step explanation"
+      "solution": "Detailed step-by-step solution"
     }}
   ]
 }}
 """
+
 
     response = openai.ChatCompletion.create(
         model="gpt-4o-mini",
