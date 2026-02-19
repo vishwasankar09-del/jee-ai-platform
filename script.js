@@ -1,3 +1,69 @@
+const syllabus = {
+  Mathematics: {
+    "Limits & Continuity": [
+      "Algebraic limits",
+      "LHL RHL problems",
+      "Continuity and differentiability"
+    ],
+    "Differentiation": [
+      "Tangent and normal",
+      "Maxima minima",
+      "Rate of change",
+      "Monotonicity"
+    ],
+    "Integration": [
+      "Definite integrals using properties",
+      "Area under curve",
+      "Improper integrals"
+    ],
+    "Coordinate Geometry": [
+      "Straight line locus problems",
+      "Circle & parabola combined locus",
+      "Ellipse & hyperbola tangents"
+    ]
+  },
+
+  Physics: {
+    "Electrostatics": [
+      "Gauss law applications",
+      "Field due to continuous charge",
+      "Capacitors with dielectric",
+      "Energy stored in capacitor"
+    ],
+    "Current Electricity": [
+      "Kirchhoff laws",
+      "Wheatstone bridge",
+      "Potentiometer numericals"
+    ],
+    "Rotational Mechanics": [
+      "Rolling motion",
+      "Angular momentum conservation",
+      "Rigid body dynamics"
+    ]
+  },
+
+  Chemistry: {
+    "Organic Chemistry": [
+      "Chemical properties of alkenes",
+      "Reaction mechanism of alkyl halides",
+      "Carbonyl compounds multi-step reactions",
+      "Amines reactions and preparation"
+    ],
+    "Physical Chemistry": [
+      "Electrochemistry numericals",
+      "Thermodynamics Gibbs free energy",
+      "Chemical kinetics rate laws",
+      "Colligative properties"
+    ],
+    "Inorganic Chemistry": [
+      "Coordination compounds isomerism",
+      "Chemical bonding MOT",
+      "d-block trends",
+      "Salt analysis logic"
+    ]
+  }
+};
+
 async function generateTest() {
 
   const data = {
