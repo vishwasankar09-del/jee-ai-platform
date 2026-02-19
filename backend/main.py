@@ -8,6 +8,7 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 
 app = FastAPI()
 
+
 class TestRequest(BaseModel):
     subject: str
     chapter: str
@@ -15,14 +16,16 @@ class TestRequest(BaseModel):
     rank: int
     n: int
 
+
 @app.get("/")
 def home():
     return {"status": "🔥 JEE AI Engine Running Successfully"}
 
+
 @app.post("/generate-test")
 def generate_test(req: TestRequest):
 
-   prompt = f"""
+    prompt = f"""
 You are a JEE question paper generator.
 
 STRICT RULES:
@@ -57,7 +60,6 @@ OUTPUT FORMAT (STRICT JSON):
 }}
 """
 
-
     response = openai.ChatCompletion.create(
         model="gpt-4o-mini",
         messages=[{"role": "user", "content": prompt}],
@@ -69,4 +71,7 @@ OUTPUT FORMAT (STRICT JSON):
     try:
         return json.loads(raw)
     except:
-        return {"error": "AI JSON parse failed", "raw": raw} """
+        return {
+            "error": "AI JSON parse failed",
+            "raw": raw
+        }
